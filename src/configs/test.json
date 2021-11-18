@@ -1,10 +1,10 @@
 {
     "env": "test",
     "dbConfig": {
-        "host": "localhost",
+        "host": "postgres",
         "user": "root",
-        "password": "password",
-        "database": "sequelize",
+        "password": "pass",
+        "database": "uSail",
         "pool": {
             "min": 0,
             "max": 5

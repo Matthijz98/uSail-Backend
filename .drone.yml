@@ -1,24 +1,24 @@
-kind: pipline
-name: uSail Backend
 type: docker
+kind: pipline
+name: uSail-Backend
 
 steps:
-- name: install
-  image: node:12-alpine
-  commands:
-    - node -v
-    - npm -v
-    - npm install && npm cache clean --force --loglevel=error
+  - name: install
+    image: node:12-alpine
+    commands:
+      - node -v
+      - npm -v
+      - npm install && npm cache clean --force --loglevel=error
 
-- name: testing
-  image: node:12-alpine
-  commands:
-    - npm run test
+  - name: testing
+    image: node:12-alpine
+    commands:
+      - npm run test
 
-- name: lint
-  image: node:12-alpine
-  commands:
-    - npm run lint
+  - name: lint
+    image: node:12-alpine
+    commands:
+      - npm run lint
 
 services:
   - name: database

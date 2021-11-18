@@ -1,0 +1,22 @@
+{
+    "env": "development",
+    "dbConfig": {
+        "host": "localhost",
+        "user": "root",
+        "password": "pass",
+        "database": "uSail",
+        "pool": {
+            "min": 0,
+            "max": 5
+        }
+    },
+    "secretKey": "secretKey",
+    "log": {
+        "format": "dev",
+        "dir": "../logs"
+    },
+    "cors": {
+        "origin": true,
+        "credentials": true
+    }
+}

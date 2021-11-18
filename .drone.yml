@@ -1,6 +1,6 @@
+kind: pipeline
+name: uSail backend
 type: docker
-kind: pipline
-name: uSail-Backend
 
 steps:
   - name: install

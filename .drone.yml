@@ -1,0 +1,31 @@
+kind: pipline
+name: uSail Backend
+type: docker
+
+steps:
+- name: install
+  image: node:12-alpine
+  commands:
+    - node -v
+    - npm -v
+    - npm install && npm cache clean --force --loglevel=error
+
+- name: testing
+  image: node:12-alpine
+  commands:
+    - npm run test
+
+- name: lint
+  image: node:12-alpine
+  commands:
+    - npm run lint
+
+services:
+  - name: database
+    image: postgres:13-alpine
+    ports:
+      - 5432
+    environment:
+      POSTGRES_DB: uSail
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: root

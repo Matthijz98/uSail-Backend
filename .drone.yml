@@ -21,7 +21,7 @@ steps:
       - npm run lint
 
 services:
-  - name: database
+  - name: postgres
     image: postgres:13-alpine
     ports:
       - 5432

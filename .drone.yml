@@ -4,19 +4,19 @@ type: docker
 
 steps:
   - name: install
-    image: node:17-alpine
+    image: node:16-alpine
     commands:
       - node -v
       - npm -v
       - npm install && npm cache clean --force --loglevel=error
 
   - name: testing
-    image: node:17-alpine
+    image: node:16-alpine
     commands:
       - npm run test
 
   - name: lint
-    image: node:17-alpine
+    image: node:16-alpine
     commands:
       - npm run lint
 

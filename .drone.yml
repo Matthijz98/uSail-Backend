@@ -43,13 +43,13 @@ steps:
   - name: docker build django image and push
     image: plugins/docker
     settings:
-      cache_from: registry.sliceofbits.com/uSail-Backend:latest
+      cache_from: registry.sliceofbits.com/u-sail-backend:latest
       username:
         from_secret: registry-username
       password:
         from_secret: registry-password
-      repo: registry.sliceofbits.com/uSail-Backend:latest
-      registry: registry.sliceofbits.com/
+      repo: registry.sliceofbits.com/u-sail-backend:latest
+      registry: registry.sliceofbits.com
       tags: latest
     when:
       branch:

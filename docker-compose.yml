@@ -14,7 +14,7 @@ services:
       - 5432:5432 #expose the port so you can access the port with a database management programm
 
   server:
-    image: registry.sliceofbits.com/uSail-Backend:latest
+    image: registry.sliceofbits.com/u-sail-backend:latest
     container_name: UsailBackend
     ports:
       - '3000:3000'

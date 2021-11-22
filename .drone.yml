@@ -28,6 +28,9 @@ steps:
       db_password: pass
       db_database: uSail
       log_dir: '../logs'
+      log_format: dev
+      cors_origin: true
+      cors_credentials: true
     settings:
       cache_from: registry.sliceofbits.com/uSail-Backend:latest
       username:

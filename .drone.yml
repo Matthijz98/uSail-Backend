@@ -12,16 +12,6 @@ steps:
 
   - name: testing
     image: node:16-alpine
-    commands:
-      - npm run test
-
-  - name: lint
-    image: node:16-alpine
-    commands:
-      - npm run lint
-
-  - name: docker build django image and push
-    image: plugins/docker
     environment:
       db_host: postgress
       db_user: root
@@ -31,6 +21,25 @@ steps:
       log_format: dev
       cors_origin: true
       cors_credentials: true
+    commands:
+      - npm run test
+
+  - name: lint
+    environment:
+      db_host: postgress
+      db_user: root
+      db_password: pass
+      db_database: uSail
+      log_dir: '../logs'
+      log_format: dev
+      cors_origin: true
+      cors_credentials: true
+    image: node:16-alpine
+    commands:
+      - npm run lint
+
+  - name: docker build django image and push
+    image: plugins/docker
     settings:
       cache_from: registry.sliceofbits.com/uSail-Backend:latest
       username:

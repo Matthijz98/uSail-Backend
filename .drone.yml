@@ -13,7 +13,7 @@ steps:
   - name: testing
     image: node:16-alpine
     environment:
-      db_host: postgress
+      db_host: postgres
       db_user: root
       db_password: pass
       db_database: uSail
@@ -26,7 +26,7 @@ steps:
 
   - name: lint
     environment:
-      db_host: postgress
+      db_host: postgres
       db_user: root
       db_password: pass
       db_database: uSail

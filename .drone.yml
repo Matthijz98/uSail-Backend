@@ -20,6 +20,24 @@ steps:
     commands:
       - npm run lint
 
+  - name: docker build django image and push
+    image: plugins/docker
+    settings:
+      cache_from: registry.sliceofbits.com/uSail-Backend:latest
+      username:
+        from_secret: registry-username
+      password:
+        from_secret: registry-password
+      repo: registry.sliceofbits.com/uSail-Backend:latest
+      registry: registry.blauweschuit.com/
+      tags: latest
+    when:
+      branch:
+        - main
+      event:
+        - push
+
+
 services:
   - name: postgres
     image: postgres:13-alpine

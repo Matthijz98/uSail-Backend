@@ -1,7 +1,7 @@
 {
     "env": "test",
     "dbConfig": {
-        "host": "postgres",
+        "host": "localhost",
         "user": "root",
         "password": "pass",
         "database": "uSail",

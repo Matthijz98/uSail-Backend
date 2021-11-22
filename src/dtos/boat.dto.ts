@@ -1,9 +1,15 @@
-import { IsString, IsEmail } from 'class-validator';
+import { IsString, IsDate } from 'class-validator';
 
 export class CreateBoatDto {
-  @IsEmail()
-  public email: string;
+  @IsString()
+  public name: string;
 
   @IsString()
-  public password: string;
+  public image: string;
+
+  @IsDate()
+  public createdAt: Date;
+
+  @IsDate()
+  public updatedAt: Date;
 }

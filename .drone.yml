@@ -22,6 +22,12 @@ steps:
 
   - name: docker build django image and push
     image: plugins/docker
+    environment:
+      - db_database: postgress
+      - db_user: root
+      - db_password: pass
+      - db_database: uSail
+      - log_dir: '../logs'
     settings:
       cache_from: registry.sliceofbits.com/uSail-Backend:latest
       username:

@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt';
-import config from 'config';
 import jwt from 'jsonwebtoken';
 import DB from '@databases';
 import { CreateUserDto } from '@dtos/users.dto';

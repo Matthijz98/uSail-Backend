@@ -1,5 +1,4 @@
 import { NextFunction, Response } from 'express';
-import config from 'config';
 import jwt from 'jsonwebtoken';
 import DB from '@databases';
 import { HttpException } from '@exceptions/HttpException';

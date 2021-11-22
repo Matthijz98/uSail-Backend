@@ -1,4 +1,3 @@
-import config from 'config';
 import fs from 'fs';
 import path from 'path';
 import winston from 'winston';

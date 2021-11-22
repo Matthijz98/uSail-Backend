@@ -49,7 +49,7 @@ steps:
       password:
         from_secret: registry-password
       repo: registry.sliceofbits.com/uSail-Backend:latest
-      registry: registry.blauweschuit.com/
+      registry: registry.sliceofbits.com/
       tags: latest
     when:
       branch:

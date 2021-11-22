@@ -21,6 +21,7 @@ steps:
       log_format: dev
       cors_origin: true
       cors_credentials: true
+      secret_key: lkejlhsdfhgkjsdfhgkdjsfhgkd
     commands:
       - npm run test
 
@@ -34,6 +35,7 @@ steps:
       log_format: dev
       cors_origin: true
       cors_credentials: true
+      secret_key: lkejlhsdfhgkjsdfhgkdjsfhgkd
     image: node:16-alpine
     commands:
       - npm run lint

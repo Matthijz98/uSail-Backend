@@ -1,18 +1,33 @@
 version: '3.7'
 
 services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: pass # set a password for the database
+      POSTGRES_USER: root # set the username for the database
+      POSTGRES_DB: uSail # give the default database a name
+    volumes:
+      - ./db-data:/var/lib/postgresql/data # mount the data folder to a local folder named "db-data" this makes is easyer to update the database
+    ports:
+      - 5432:5432 #expose the port so you can access the port with a database management programm
+
   server:
     image: registry.sliceofbits.com/uSail-Backend:latest
     container_name: UsailBackend
     ports:
       - '3000:3000'
     environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: pass
-      MYSQL_HOST: postgres
-      MYSQL_DATABASE: uSail
+      db_user: root
+      db_password: pass
+      db_host: postgres
+      db_database: uSail
+      log_dir: '../logs'
+      log_format: dev
+      cors_origin: true
+      cors_credentials: true
+      secret_key: lkejlhsdfhgkjsdfhgkdjsfhgkd
     volumes:
       - ./:/app/configs
     restart: 'unless-stopped'
-    networks:
-      - backend

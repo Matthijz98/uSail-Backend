@@ -10,35 +10,15 @@ steps:
       - npm -v
       - npm install && npm cache clean --force --loglevel=error
 
-  - name: testing
-    image: node:16-alpine
-    environment:
-      db_host: postgres
-      db_user: root
-      db_password: pass
-      db_database: uSail
-      log_dir: '../logs'
-      log_format: dev
-      cors_origin: true
-      cors_credentials: true
-      secret_key: lkejlhsdfhgkjsdfhgkdjsfhgkd
-    commands:
-      - npm run test
-
-  - name: lint
-    environment:
-      db_host: postgres
-      db_user: root
-      db_password: pass
-      db_database: uSail
-      log_dir: '../logs'
-      log_format: dev
-      cors_origin: true
-      cors_credentials: true
-      secret_key: lkejlhsdfhgkjsdfhgkdjsfhgkd
-    image: node:16-alpine
-    commands:
-      - npm run lint
+#  - name: testing
+#    image: node:16-alpine
+#    environment:
+#      db_host: postgres
+#      db_user: root
+#      db_password: pass
+#      db_database: uSail
+#    commands:
+#      - npm run test
 
   - name: docker build django image and push
     image: plugins/docker

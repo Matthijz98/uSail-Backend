@@ -28,6 +28,14 @@ services:
       cors_origin: true
       cors_credentials: true
       secret_key: lkejlhsdfhgkjsdfhgkdjsfhgkd
-    volumes:
-      - ./:/app/configs
     restart: 'unless-stopped'
+    labels:
+      - "traefik.enable=true" # <== Enable traefik to proxy this container
+      - "traefik.http.routers.uSail.rule=Host(`usail.sliceofbits.com`)" #$
+      - "traefik.http.routers.uSail.entrypoints=web-secured" # <== Defining the$
+      - "traefik.http.routers.uSail.service=uSail-service"
+      - "traefik.http.routers.uSail.tls=true"
+      - "traefik.http.routers.uSail.tls.certresolver=myresolver"
+      - "traefik.http.services.uSail-service.loadbalancer.server.port=3000"
+
+

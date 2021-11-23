@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import UserModel from '@models/users.model';
+import BoatModel from '@models/boat.model'
 import { logger } from '@utils/logger';
 
 const sequelize = new Sequelize.Sequelize(process.env.db_database, process.env.db_user, process.env.db_password, {
@@ -22,6 +23,7 @@ sequelize.authenticate();
 
 const DB = {
   Users: UserModel(sequelize),
+  Boats: BoatModel(sequelize),
   sequelize, // connection instance (RAW queries)
   Sequelize, // library
 };

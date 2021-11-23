@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import { CreateBoatDto } from '@dtos/boats.dto';
-import { Boat } from '@interfaces/boats.interface';
-import boatService from '@services/boats.service';
+import {CreateBoatDto} from "@dtos/boat.dto";
+import {Boat} from "@interfaces/boat.interface";
+import boatService from '@/services/boat.service';
 
 class BoatsController {
   public boatService = new boatService();

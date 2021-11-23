@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { Routes } from '@interfaces/routes.interface';
 import validationMiddleware from '@middlewares/validation.middleware';
-import {CreateBoatDto} from "@dtos/boat.dto";
-import BoatsController from "@controllers/boat.controller";
+import { CreateBoatDto } from '@dtos/boat.dto';
+import BoatsController from '@controllers/boat.controller';
 
 class BoatsRoute implements Routes {
   public path = '/boats';

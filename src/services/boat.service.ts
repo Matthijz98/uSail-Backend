@@ -1,9 +1,8 @@
-import bcrypt from 'bcrypt';
 import DB from '@databases';
 import { HttpException } from '@exceptions/HttpException';
 import { isEmpty } from '@utils/util';
-import {Boat} from "@interfaces/boat.interface";
-import {CreateBoatDto} from "@dtos/boat.dto";
+import { Boat } from '@interfaces/boat.interface';
+import { CreateBoatDto } from '@dtos/boat.dto';
 
 class BoatService {
   public boats = DB.Boats;
@@ -38,7 +37,7 @@ class BoatService {
     const findBoat: Boat = await this.boats.findByPk(boatId);
     if (!findBoat) throw new HttpException(409, "You're not boat");
 
-    await this.boats.update({ ...boatData}, { where: { id: boatId } });
+    await this.boats.update({ ...boatData }, { where: { id: boatId } });
 
     const updateBoat: Boat = await this.boats.findByPk(boatId);
     return updateBoat;

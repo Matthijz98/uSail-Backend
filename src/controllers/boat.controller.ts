@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import {CreateBoatDto} from "@dtos/boat.dto";
-import {Boat} from "@interfaces/boat.interface";
+import { CreateBoatDto } from '@dtos/boat.dto';
+import { Boat } from '@interfaces/boat.interface';
 import boatService from '@/services/boat.service';
 
 class BoatsController {

@@ -1,12 +1,22 @@
 module.exports = (sequelize, Sequelize) => {
     const Boat = sequelize.define("boat", {
-        name: {
+        id: {
+            type: Sequelize.UUID,
+            primaryKey: true
+        },
+        boat_name: {
             type: Sequelize.STRING
         },
-        image: {
+        boat_image: {
             type: Sequelize.STRING
         },
-        created_at: {
+        boat_description: {
+            type: Sequelize.TEXT
+        },
+        boat_created_at: {
+            type: Sequelize.DATE
+        },
+        boat_updated_at: {
             type: Sequelize.DATE
         }
     });

@@ -1,8 +1,8 @@
 const db = require("../models");
-const Boat = db.boats;
+const User = db.users;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Boat
+// Create and Save a new User
 exports.create = (req, res) => {
 // Validate request
     if (!req.body.title) {
@@ -12,109 +12,111 @@ exports.create = (req, res) => {
         return;
     }
 
-    // Create a Boat
-    const boat = {
-        title: req.body.title,
-        image: req.body.image,
+    // Create a User
+    const user = {
+        user_name: req.body.user_name,
+        user_full_name: req.body.user_full_name,
+        user_email: req.user_email,
+        user_password: req.user_password
     };
 
-    // Save Boat in the database
-    Boat.create(boat)
+    // Save User in the database
+    User.create(user)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Boat."
+                    err.message || "Some error occurred while creating the User."
             });
         });
 };
 
-// Retrieve all Boats from the database.
+// Retrieve all Users from the database.
 exports.findAll = (req, res) => {
-    Boat.findAll({})
+    User.findAll({})
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving boats."
+                    err.message || "Some error occurred while retrieving users."
             });
         });
 
 };
 
-// Find a single Boat with an id
+// Find a single User with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Boat.findByPk(id)
+    User.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find Boat with id=${id}.`
+                    message: `Cannot find User with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Boat with id=" + id
+                message: "Error retrieving User with id=" + id
             });
         });
 
 };
 
-// Update a Boat by the id in the request
+// Update a User by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Boat.update(req.body, {
+    User.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Boat was updated successfully."
+                    message: "User was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Boat with id=${id}. Maybe Boat was not found or req.body is empty!`
+                    message: `Cannot update User with id=${id}. Maybe User was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Boat with id=" + id
+                message: "Error updating User with id=" + id
             });
         })
 
 };
 
-// Delete a Boat with the specified id in the request
+// Delete a User with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Boat.destroy({
+    User.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Boat was deleted successfully!"
+                    message: "User was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Boat with id=${id}. Maybe Boat was not found!`
+                    message: `Cannot delete User with id=${id}. Maybe User was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Boat with id=" + id
+                message: "Could not delete User with id=" + id
             });
         });
 

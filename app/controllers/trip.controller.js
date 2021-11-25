@@ -1,8 +1,8 @@
 const db = require("../models");
-const Boat = db.boats;
+const Trip = db.trips;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Boat
+// Create and Save a new Trip
 exports.create = (req, res) => {
 // Validate request
     if (!req.body.title) {
@@ -12,109 +12,113 @@ exports.create = (req, res) => {
         return;
     }
 
-    // Create a Boat
-    const boat = {
-        title: req.body.title,
-        image: req.body.image,
+    // Create a Trip
+    const trip = {
+        trip_by_user: req.trip_by_user,
+        trip_title: req.trip_by_user,
+        trip_start_time: req.trip_by_user,
+        trip_start_location: req.trip_start_location,
+        trip_end_time: req.trip_end_time,
+        trip_end_location: req.trip_end_location
     };
 
-    // Save Boat in the database
-    Boat.create(boat)
+    // Save Trip in the database
+    Trip.create(trip)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Boat."
+                    err.message || "Some error occurred while creating the Trip."
             });
         });
 };
 
-// Retrieve all Boats from the database.
+// Retrieve all Trips from the database.
 exports.findAll = (req, res) => {
-    Boat.findAll({})
+    Trip.findAll({})
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving boats."
+                    err.message || "Some error occurred while retrieving trips."
             });
         });
 
 };
 
-// Find a single Boat with an id
+// Find a single Trip with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Boat.findByPk(id)
+    Trip.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find Boat with id=${id}.`
+                    message: `Cannot find Trip with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Boat with id=" + id
+                message: "Error retrieving Trip with id=" + id
             });
         });
 
 };
 
-// Update a Boat by the id in the request
+// Update a Trip by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Boat.update(req.body, {
+    Trip.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Boat was updated successfully."
+                    message: "Trip was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Boat with id=${id}. Maybe Boat was not found or req.body is empty!`
+                    message: `Cannot update Trip with id=${id}. Maybe Trip was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Boat with id=" + id
+                message: "Error updating Trip with id=" + id
             });
         })
 
 };
 
-// Delete a Boat with the specified id in the request
+// Delete a Trip with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Boat.destroy({
+    Trip.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Boat was deleted successfully!"
+                    message: "Trip was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Boat with id=${id}. Maybe Boat was not found!`
+                    message: `Cannot delete Trip with id=${id}. Maybe Trip was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Boat with id=" + id
+                message: "Could not delete Trip with id=" + id
             });
         });
 

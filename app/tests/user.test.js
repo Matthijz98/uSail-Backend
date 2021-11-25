@@ -8,7 +8,7 @@ describe("POST new user", () => {
     let thisDb = db
 
     beforeAll(async () =>{
-        await thisDb.sequelize.sync({ force: true })
+        await thisDb.sequelize.sync({ force: true });
     })
     test("It should create the user and return it", async () => {
         const response = await request(app).post("/api/users").send({
@@ -29,5 +29,31 @@ describe("POST new user", () => {
         expect(response.body).toHaveProperty("createdAt");
 
         expect(response.statusCode).toBe(200);
+    });
+
+    test("It should return error if username is not provided", async () => {
+        const response = await request(app).post("/api/users").send({
+            "user_profile_image": "test_user_profile_image",
+            "user_password": "test_user_password",
+            "user_email": "test@test.com",
+            "user_full_name" : "Firstname Lastname",
+
+        });
+        expect(response.body).toHaveProperty("message");
+
+        expect(response.statusCode).toBe(500);
+    });
+
+    test("It should return error if email is not provided", async () => {
+        const response = await request(app).post("/api/users").send({
+            "user_profile_image": "test_user_profile_image",
+            "user_password": "test_user_password",
+            "user_name": "test username",
+            "user_full_name" : "Firstname Lastname",
+
+        });
+        expect(response.body).toHaveProperty("message");
+
+        expect(response.statusCode).toBe(500);
     });
 });

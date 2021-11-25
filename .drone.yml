@@ -17,8 +17,9 @@ steps:
       db_user: root
       db_password: pass
       db_database: uSail
+      node_test: true
     commands:
-      - npm install -g --save-dev jest supertest
+      - npm install jest supertest
       - npm run test
 
   - name: docker build django image and push

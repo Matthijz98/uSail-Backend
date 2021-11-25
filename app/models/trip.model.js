@@ -1,15 +1,15 @@
-const User = require('user.model')
-
 module.exports = (sequelize, Sequelize) => {
     const Trip = sequelize.define("trip", {
         id: {
             type: Sequelize.UUID,
-            primaryKey: true
+            primaryKey: true,
+            defaultValue: Sequelize.UUID,
+            allowNull: false
         },
         trip_by_user: {
             type: Sequelize.UUID,
             references: {
-                model: User,
+                model: 'users',
                 key: 'id'
             }
         },

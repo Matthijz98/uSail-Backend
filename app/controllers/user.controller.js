@@ -1,11 +1,11 @@
 const db = require("../models");
-const User = db.users;
+const User = db.user;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new User
 exports.create = (req, res) => {
 // Validate request
-    if (!req.body.title) {
+    if (!req.body) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
@@ -16,8 +16,11 @@ exports.create = (req, res) => {
     const user = {
         user_name: req.body.user_name,
         user_full_name: req.body.user_full_name,
-        user_email: req.user_email,
-        user_password: req.user_password
+        user_email: req.body.user_email,
+        user_password: req.body.user_password,
+        user_created_at: Date.now(),
+        user_updated_at: Date.now(),
+        user_profile_image: req.user_profile_image
     };
 
     // Save User in the database

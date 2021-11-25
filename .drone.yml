@@ -10,15 +10,16 @@ steps:
       - npm -v
       - npm install && npm cache clean --force --loglevel=error
 
-#  - name: testing
-#    image: node:16-alpine
-#    environment:
-#      db_host: postgres
-#      db_user: root
-#      db_password: pass
-#      db_database: uSail
-#    commands:
-#      - npm run test
+  - name: testing
+    image: node:16-alpine
+    environment:
+      db_host: postgres
+      db_user: root
+      db_password: pass
+      db_database: uSail
+    commands:
+      - npm install -g --save-dev jest supertest
+      - npm run test
 
   - name: docker build django image and push
     image: plugins/docker

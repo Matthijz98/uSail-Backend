@@ -2,7 +2,9 @@ module.exports = (sequelize, Sequelize) => {
     const Boat = sequelize.define("boat", {
         id: {
             type: Sequelize.UUID,
-            primaryKey: true
+            primaryKey: true,
+            defaultValue: Sequelize.UUID,
+            allowNull: false
         },
         boat_name: {
             type: Sequelize.STRING

@@ -1,6 +1,6 @@
-const trips = require("../controllers/trip.controler");
+const trips = require("../controllers/trip.controller");
 module.exports = app => {
-    const trips = require("../controllers/trip.controler");
+    const trips = require("../controllers/trip.controller");
 
     var router = require("express").Router();
 

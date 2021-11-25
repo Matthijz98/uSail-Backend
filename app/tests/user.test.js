@@ -4,8 +4,8 @@ const request = require("supertest");
 const app = require("../../server");
 const db = require("../models/index");
 
-describe("POST new user", () => {
-    let thisDb = db
+describe("user POST route", () => {
+    let thisDb = db;
 
     beforeAll(async () =>{
         await thisDb.sequelize.sync({ force: true });
@@ -52,6 +52,38 @@ describe("POST new user", () => {
             "user_full_name" : "Firstname Lastname",
 
         });
+        expect(response.body).toHaveProperty("message");
+
+        expect(response.statusCode).toBe(500);
+    });
+});
+describe("user GET route", () => {
+    let thisDb = db;
+    let user_id = '';
+
+    beforeAll(async () =>{
+        await thisDb.sequelize.sync({ force: true });
+
+        const response = await request(app).post("/api/users").send({
+            "user_profile_image": "test_user_profile_image",
+            "user_name": "test_user_name",
+            "user_password": "test_user_password",
+            "user_email": "test@test.com",
+            "user_full_name" : "Firstname Lastname",
+
+        });
+        user_id = response.body.id;
+    })
+
+    test("Get user by id", async () => {
+        const response = await request(app).get("/api/users/" + user_id);
+        expect(response.body).toHaveProperty("id", user_id);
+
+        expect(response.statusCode).toBe(200);
+    });
+
+    test("User should not be resurned if id is not given", async () => {
+        const response = await request(app).get("/api/users/" + 'not-a-user-id');
         expect(response.body).toHaveProperty("message");
 
         expect(response.statusCode).toBe(500);

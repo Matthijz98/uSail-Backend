@@ -2,8 +2,14 @@
 const request = require("supertest");
 // we also need our app for the correct routes!
 const app = require("../../server");
+const db = require("../models/index");
 
 describe("POST new user", () => {
+    let thisDb = db
+
+    beforeAll(async () =>{
+        await thisDb.sequelize.sync({ force: true })
+    })
     test("It should create the user and return it", async () => {
         const response = await request(app).post("/api/users").send({
             "user_profile_image": "test_user_profile_image",

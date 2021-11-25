@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
         id: {
             type: Sequelize.UUID,
             primaryKey: true,
-            defaultValue: Sequelize.UUID,
+            defaultValue: Sequelize.UUIDV4,
             allowNull: false
         },
         boat_name: {

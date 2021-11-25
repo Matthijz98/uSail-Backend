@@ -19,6 +19,7 @@ steps:
       db_database: uSail
       node_test: true
     commands:
+      - npm install
       - npm install jest supertest
       - npm run test
 

@@ -1,11 +1,10 @@
 const db = require("../models");
-const Boat = db.boats;
-const Op = db.Sequelize.Op;
+const Boat = db.boat;
 
 // Create and Save a new Boat
 exports.create = (req, res) => {
 // Validate request
-    if (!req.body.title) {
+    if (!req.body) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
@@ -14,8 +13,11 @@ exports.create = (req, res) => {
 
     // Create a Boat
     const boat = {
-        title: req.body.title,
-        image: req.body.image,
+        boat_name: req.body.boat_name,
+        boat_image: req.body.boat_image,
+        boat_description: req.body.boat_description,
+        boat_created_at: Date.now(),
+        boat_updated_at: Date.now()
     };
 
     // Save Boat in the database

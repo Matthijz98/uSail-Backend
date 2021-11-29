@@ -9,7 +9,6 @@ module.exports = app => {
     // Retrieve all Boats
     router.get("/", boats.findAll);
 
-
     // Retrieve a single Boat with id
     router.get("/:id", boats.findOne);
 

@@ -7,7 +7,8 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
         boat_name: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         boat_image: {
             type: Sequelize.STRING

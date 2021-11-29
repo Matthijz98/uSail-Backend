@@ -1,4 +1,3 @@
-const users = require("../controllers/user.controller");
 module.exports = app => {
     const users = require("../controllers/user.controller");
 
@@ -9,7 +8,6 @@ module.exports = app => {
 
     // Retrieve all Users
     router.get("/", users.findAll);
-
 
     // Retrieve a single User with id
     router.get("/:id", users.findOne);

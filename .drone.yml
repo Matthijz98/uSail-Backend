@@ -3,13 +3,6 @@ name: uSail backend
 type: docker
 
 steps:
-  - name: install
-    image: node:16-alpine
-    commands:
-      - node -v
-      - npm -v
-      - npm install && npm cache clean --force --loglevel=error
-
   - name: testing
     image: node:16-alpine
     environment:
@@ -22,7 +15,9 @@ steps:
       - npm install
       - npm install jest supertest
       - npm install -g sequelize-cli
+      - cd app
       - sequelize db:migrate
+      - cd ..
       - npm run test
 
   - name: docker build django image and push

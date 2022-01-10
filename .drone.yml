@@ -21,6 +21,8 @@ steps:
     commands:
       - npm install
       - npm install jest supertest
+      - npm install -g sequelize-cli
+      - sequelize db:migrate
       - npm run test
 
   - name: docker build django image and push

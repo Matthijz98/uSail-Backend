@@ -1,5 +1,5 @@
 const db = require("../models");
-const Boat = db.boat;
+const { Boat } = require('../models');
 
 // Create and Save a new Boat
 exports.create = (req, res) => {

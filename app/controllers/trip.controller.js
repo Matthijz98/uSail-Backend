@@ -1,6 +1,5 @@
 const db = require("../models");
-const Trip = db.trips;
-const Op = db.Sequelize.Op;
+const { Trip } = require('../models');
 
 // Create and Save a new Trip
 exports.create = (req, res) => {

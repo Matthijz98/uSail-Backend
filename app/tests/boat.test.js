@@ -8,7 +8,7 @@ describe("boat POST route", () => {
     let thisDb = db;
 
     beforeAll(async () =>{
-        await thisDb.sequelize.sync({ force: true });
+
     })
     test("It should create the boat and return it", async () => {
         const response = await request(app).post("/api/boats").send({
@@ -42,7 +42,6 @@ describe("boat GET route", () => {
     let boat_id = '';
 
     beforeAll(async () =>{
-        await thisDb.sequelize.sync({ force: true });
 
         const response = await request(app).post("/api/boats").send({
             "boat_name": "Test boat name",

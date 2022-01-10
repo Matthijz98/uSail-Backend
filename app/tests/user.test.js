@@ -8,7 +8,7 @@ describe("user POST route", () => {
     let thisDb = db;
 
     beforeAll(async () =>{
-        await thisDb.sequelize.sync({ force: true });
+
     })
     test("It should create the user and return it", async () => {
         const response = await request(app).post("/api/users").send({
@@ -62,7 +62,6 @@ describe("user GET route", () => {
     let user_id = '';
 
     beforeAll(async () =>{
-        await thisDb.sequelize.sync({ force: true });
 
         const response = await request(app).post("/api/users").send({
             "user_profile_image": "test_user_profile_image",

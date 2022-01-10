@@ -36,6 +36,21 @@ exports.create = (req, res) => {
         });
 };
 
+exports.login = (req, res) => {
+    User.findAll({
+        where: {
+            user_email: req.body.user_email,
+            user_password: req.body.user_password
+        }
+    }).then(data => {
+        res.send(data);
+    }).catch(err => {
+        res.status(401).send({
+            message: err.message || "User not found"
+        })
+    })
+}
+
 // Retrieve all Users from the database.
 exports.findAll = (req, res) => {
     User.findAll({})

@@ -7,6 +7,8 @@ WORKDIR /app
 
 RUN npm install
 
+RUN npm install -g sequelize-cli
+
 EXPOSE 3000
 
-CMD ["sequelize db:migrate; npm run dev"]
+ENTRYPOINT ["entrypoint.sh"]

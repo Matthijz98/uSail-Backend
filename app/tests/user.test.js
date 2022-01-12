@@ -76,7 +76,6 @@ describe("user GET route", () => {
     test("Get user by id", async () => {
         const response = await request(app).get("/api/users/" + user_id);
         expect(response.body).toHaveProperty("id", user_id);
-
         expect(response.statusCode).toBe(200);
     });
 

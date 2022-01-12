@@ -15,7 +15,7 @@ describe("user POST route", () => {
             "user_profile_image": "test_user_profile_image",
             "user_name": "test_user_name",
             "user_password": "test_user_password",
-            "user_email": "test@test.com",
+            "user_email": "test123@test.com",
             "user_full_name" : "Firstname Lastname",
 
         });

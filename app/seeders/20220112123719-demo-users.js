@@ -11,8 +11,8 @@ module.exports = {
       "updatedAt": new Date()
     },{
       "id": "b80ca1c9-6cc7-4723-a92c-940adea582d7",
-      "user_password": "testpass",
-      "user_email": "test@test.com",
+      "user_password": "hoiioh",
+      "user_email": "lol",
       "user_name": "koen",
       "createdAt": new Date(),
       "updatedAt": new Date()

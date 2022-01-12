@@ -69,7 +69,6 @@ describe("user GET route", () => {
             "user_password": "test_user_password",
             "user_email": "test@test.com",
             "user_full_name" : "Firstname Lastname",
-
         });
         user_id = response.body.id;
     })
@@ -77,7 +76,6 @@ describe("user GET route", () => {
     test("Get user by id", async () => {
         const response = await request(app).get("/api/users/" + user_id);
         expect(response.body).toHaveProperty("id", user_id);
-
         expect(response.statusCode).toBe(200);
     });
 

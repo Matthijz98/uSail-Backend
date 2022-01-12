@@ -11,4 +11,4 @@ RUN npm install -g sequelize-cli
 
 EXPOSE 3000
 
-#ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]

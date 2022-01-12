@@ -14,28 +14,15 @@ services:
       - 5432:5432 #expose the port so you can access the port with a database management programm
 
   server:
-    image: registry.sliceofbits.com/u-sail-backend:latest
+    build: .
     container_name: UsailBackend
     ports:
       - '3000:3000'
     environment:
       db_user: root
       db_password: pass
-      db_host: postgres
+      db_host: db
       db_database: uSail
-      log_dir: '../logs'
-      log_format: dev
-      cors_origin: true
-      cors_credentials: true
-      secret_key: lkejlhsdfhgkjsdfhgkdjsfhgkd
     restart: 'unless-stopped'
-    labels:
-      - "traefik.enable=true" # <== Enable traefik to proxy this container
-      - "traefik.http.routers.uSail.rule=Host(`usail.sliceofbits.com`)" #$
-      - "traefik.http.routers.uSail.entrypoints=web-secured" # <== Defining the$
-      - "traefik.http.routers.uSail.service=uSail-service"
-      - "traefik.http.routers.uSail.tls=true"
-      - "traefik.http.routers.uSail.tls.certresolver=myresolver"
-      - "traefik.http.services.uSail-service.loadbalancer.server.port=3000"
 
 

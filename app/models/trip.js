@@ -27,6 +27,13 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
+    trip_with_boat: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'boats',
+        key: 'id'
+      }
+    },
     trip_start_time: {
       type: DataTypes.DATE
     },

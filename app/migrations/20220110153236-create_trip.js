@@ -15,6 +15,13 @@ module.exports = {
           key: 'id'
         }
       },
+      trip_with_boat: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'Boats',
+          key: 'id'
+        }
+      },
       trip_start_time: {
         type: Sequelize.DATE
       },

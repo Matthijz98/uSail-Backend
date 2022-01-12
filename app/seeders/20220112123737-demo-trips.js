@@ -8,6 +8,7 @@ module.exports = {
     await queryInterface.bulkInsert('Trips', [{
       "id": "56f533bb-0c02-4c4b-8f65-a4f71e30cbf2",
       "trip_by_user": "b80ca1c9-6cc7-4723-a92c-940adea582d7",
+      "trip_with_boat": "7520d9b2-73b3-11ec-90d6-0242ac120003",
       "trip_title": "test_trip",
       "trip_start_time": start_date,
       "trip_start_location": "52.0000:32.000",

@@ -18,7 +18,7 @@ steps:
       - sequelize db:migrate
       - npm run test
 
-  - name: docker build django image and push
+  - name: docker build image and push
     image: plugins/docker
     settings:
       cache_from: registry.sliceofbits.com/u-sail-backend:latest

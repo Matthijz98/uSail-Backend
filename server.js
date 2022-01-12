@@ -2,8 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-
-const db = require("./app/models");
+const fileUpload = require('express-fileupload');
 
 var corsOptions = {
     origin: "http://localhost:8081"
@@ -11,6 +10,7 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use(fileUpload({createParentPath: true}))
 // parse requests of content-type - application/json
 app.use(express.json());
 

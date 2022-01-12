@@ -65,11 +65,10 @@ describe("user GET route", () => {
 
         const response = await request(app).post("/api/users").send({
             "user_profile_image": "test_user_profile_image",
-            "user_name": "test_user_name",
+            "user_name": "some_test_user_name",
             "user_password": "test_user_password",
-            "user_email": "test@test.com",
+            "user_email": "some_test@test.com",
             "user_full_name" : "Firstname Lastname",
-
         });
         user_id = response.body.id;
     })

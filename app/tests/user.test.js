@@ -22,7 +22,7 @@ describe("user POST route", () => {
         expect(response.body).toHaveProperty("id");
         expect(response.body).toHaveProperty("user_name", "test_user_name");
         expect(response.body).toHaveProperty("user_password", "test_user_password");
-        expect(response.body).toHaveProperty("user_email", "test@test.com");
+        expect(response.body).toHaveProperty("user_email", "test123@test.com");
         expect(response.body).toHaveProperty("user_full_name", "Firstname Lastname");
         expect(response.body).toHaveProperty("user_profile_image", null);
         expect(response.body).toHaveProperty("updatedAt");

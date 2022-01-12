@@ -68,7 +68,23 @@ exports.findOne = (req, res) => {
                 message: "Error retrieving Trip with id=" + id
             });
         });
+};
 
+// Get made trips by a user
+exports.getUserTrips = (req, res) => {
+    const user_id = req.params.id;
+
+    Trip.findAll({
+        where: {
+            trip_by_user: user_id,
+        }
+    }).then(data => {
+        res.send(data);
+    }).catch(err => {
+        res.status(401).send({
+            message: err.message || "User not found"
+        })
+    })
 };
 
 // Update a Trip by the id in the request

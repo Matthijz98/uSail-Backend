@@ -18,7 +18,7 @@ module.exports = {
       boat_active_user: {
         type: Sequelize.UUID,
         references: {
-          model: 'users',
+          model: 'Users',
           key: 'id'
         }
       },

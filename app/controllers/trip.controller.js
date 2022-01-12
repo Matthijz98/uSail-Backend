@@ -4,7 +4,7 @@ const { Trip } = require('../models');
 // Create and Save a new Trip
 exports.create = (req, res) => {
 // Validate request
-    if (!req.body.title) {
+    if (!req.body) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
@@ -14,8 +14,8 @@ exports.create = (req, res) => {
     // Create a Trip
     const trip = {
         trip_by_user: req.trip_by_user,
-        trip_title: req.trip_by_user,
-        trip_start_time: req.trip_by_user,
+        trip_title: req.trip_title,
+        trip_start_time: req.trip_start_time,
         trip_start_location: req.trip_start_location,
         trip_end_time: req.trip_end_time,
         trip_end_location: req.trip_end_location
@@ -120,5 +120,47 @@ exports.delete = (req, res) => {
                 message: "Could not delete Trip with id=" + id
             });
         });
+    };
+
+exports.download = (req, res) => {
+    const id = req.params.id
+
+    const file = './uploads/'+ "trip_" + id + '.csv';
+    res.download(file, (err) => {
+        if (err) res.status(500).send({
+            message:err
+        })
+    });
+}
+
+exports.upload = (req, res) => {
+    const id = req.params.id
+
+    try {
+        if(!req.files) {
+            res.status(500).send({
+                message: "No file send"
+            })
+        } else {
+            let trip_file = req.files.trip_file;
+
+            //Use the mv() method to place the file in upload directory
+            trip_file.mv('./uploads/'+ "trip_" + id + '.csv');
+
+            //send response
+            res.send({
+                status: true,
+                message: 'File is uploaded',
+                data: {
+                    name: "trip_" + id,
+                    size: trip_file.size
+                }
+            });
+        }
+    } catch (err) {
+        res.status(500).send({
+            message:err
+        });
+    }
 
 };

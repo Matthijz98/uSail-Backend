@@ -10,7 +10,6 @@ module.exports = app => {
     // Retrieve all Trips
     router.get("/", trips.findAll);
 
-
     // Retrieve a single Trip with id
     router.get("/:id", trips.findOne);
 
@@ -19,6 +18,12 @@ module.exports = app => {
 
     // Delete a Trip with id
     router.delete("/:id", trips.delete);
+
+    // Trip file upload route
+    router.post("/:id/upload", trips.upload)
+
+    // Trip file download route
+    router.get("/:id/upload", trips.download)
 
     app.use('/api/trips', router);
 };

@@ -24,6 +24,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    boat_location: {
+      type: DataTypes.STRING
+    },
+    boat_active_user: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'users',
+        key: 'id'
+      }
+    },
     boat_image: {
       type: DataTypes.STRING
     },

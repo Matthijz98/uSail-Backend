@@ -12,6 +12,16 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      boat_location: {
+        type: Sequelize.STRING
+      },
+      boat_active_user: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      },
       boat_image: {
         type: Sequelize.STRING
       },

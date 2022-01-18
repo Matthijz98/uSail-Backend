@@ -5,7 +5,7 @@ module.exports = {
      await queryInterface.bulkInsert('Boats', [{
        "id": "7520d9b2-73b3-11ec-90d6-0242ac120003",
        "boat_name": "test boat name",
-       "boat_location": "coordinate",
+       "boat_location": "52.080970, 4.917002",
        "boat_active_user": "b80ca1c9-6cc7-4723-a92c-940adea582d7",
        "boat_image": null,
        "boat_description": "This boat is a great boat for testing",

@@ -26,7 +26,7 @@ module.exports = app => {
     router.post("/:id/upload", trips.upload)
 
     // Trip file download route
-    router.get("/:id/upload", trips.download)
+    router.get("/:id/download", trips.download)
 
     app.use('/api/trips', router);
 };

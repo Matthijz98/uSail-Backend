@@ -1,5 +1,6 @@
 const db = require("../models");
 const { Trip } = require('../models');
+const { Boat } = require('../models');
 
 // Create and Save a new Trip
 exports.create = (req, res) => {
@@ -25,8 +26,17 @@ exports.create = (req, res) => {
 
     // Save Trip in the database
     Trip.create(trip)
-        .then(data => {
-            res.send(data);
+        .then(() => {
+            Boat.update({boat_active_user: req.body.trip_by_user}, {
+                where: { id: req.body.trip_with_boat }
+            }).then((data2) => {
+                res.send(data2);
+            }).catch(error => {
+                res.status(500).send({
+                    message:
+                        error.message || "Some error occurred while creating the Trip."
+                });
+            })
         })
         .catch(err => {
             res.status(500).send({

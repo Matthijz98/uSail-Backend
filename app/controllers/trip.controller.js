@@ -108,9 +108,16 @@ exports.update = (req, res) => {
     })
         .then(num => {
             if (num == 1) {
-                res.send({
-                    message: "Trip was updated successfully."
-                });
+                Boat.update({boat_active_user: null}, {
+                    where: { id: req.body.trip_with_boat }
+                }).then((data2) => {
+                    res.send(data2);
+                }).catch(error => {
+                    res.status(500).send({
+                        message:
+                            error.message || "Some error occurred while updating the Trip."
+                    });
+                })
             } else {
                 res.send({
                     message: `Cannot update Trip with id=${id}. Maybe Trip was not found or req.body is empty!`

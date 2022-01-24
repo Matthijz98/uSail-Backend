@@ -13,10 +13,10 @@ exports.create = (req, res) => {
 
     // Create a Trip
     const trip = {
-        trip_by_user: req.trip_by_user,
-        trip_title: req.trip_title,
-        trip_start_time: req.trip_start_time,
-        trip_start_location: req.trip_start_location,
+        trip_by_user: req.body.trip_by_user,
+        trip_title: req.body.trip_title,
+        trip_start_time: req.body.trip_start_time,
+        trip_start_location: req.body.trip_start_location,
         // Last two elements need to be inserted when the trip has been finished
         // trip_end_time: req.trip_end_time,
         // trip_end_location: req.trip_end_location

@@ -26,11 +26,12 @@ exports.create = (req, res) => {
 
     // Save Trip in the database
     Trip.create(trip)
-        .then(() => {
+        .then((data) => {
             Boat.update({boat_active_user: req.body.trip_by_user}, {
                 where: { id: req.body.trip_with_boat }
             }).then((data2) => {
-                res.send(data2);
+                const finalResult = Object.assign(data, data2);
+                res.send(finalResult);
             }).catch(error => {
                 res.status(500).send({
                     message:

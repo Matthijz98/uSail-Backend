@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Boats from the database.
 exports.findAll = (req, res) => {
-    Boat.findAll({})
+    Boat.findAll({where: {boat_active_user: null}})
         .then(data => {
             res.send(data);
         })

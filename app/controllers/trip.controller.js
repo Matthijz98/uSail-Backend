@@ -109,10 +109,10 @@ exports.update = (req, res) => {
     })
         .then(num => {
             if (num == 1) {
-                Boat.update({boat_active_user: null}, {
+                Boat.update({boat_active_user: null, boat_location: req.body.trip_end_location}, {
                     where: { id: req.body.trip_with_boat }
-                }).then((data2) => {
-                    res.send(data2);
+                }).then(() => {
+                    res.send({});
                 }).catch(error => {
                     res.status(500).send({
                         message:
